@@ -8,3 +8,7 @@ class Car(models.Model):
     
     def __str__(self):
         return f'{self.brand} {self.year} {self.country}'
+    
+class Meta:
+    verbose_name = "Car"
+    verbose_name_plural = "Cars"
