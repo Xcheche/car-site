@@ -1,0 +1,24 @@
+{% extends 'partials/_base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Car | Delete</h1>
+    <div class="row">
+        <div class="col-md-6 offset-md-3 mt-5">
+            <div class="formgroup mt-3">
+                <form action="{% url 'cars:delete' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="pk">Enter Car ID To Delete</label>
+                        <input type="text" name="pk" class="form-control mt-3" placeholder="Enter car id" id="pk">
+                    </div>
+                    <br>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

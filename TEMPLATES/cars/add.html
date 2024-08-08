@@ -1,0 +1,32 @@
+{% extends 'partials/_base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Car | Add</h1>
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+
+            <form action="{% url 'cars:add' %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="brand">Brand</label>
+                    <input type="text" name="brand" class="form-control" placeholder="Enter car brand" id="brand">
+                </div>
+                <div class="form-group">
+                    <label for="country">Country</label>
+                    <input type="text" name="country" class="form-control" placeholder="Enter car country" id="country">
+                </div>
+
+                <div class="form-group">
+                    <label for="year">Year</label>
+                    <input type="number" name="year" class="form-control" placeholder="Enter car year" id="year">
+                </div>
+                <br>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

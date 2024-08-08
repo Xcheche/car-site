@@ -1,0 +1,66 @@
+{% extends 'partials/_base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Car | List</h1>
+
+    <!--Css for messages-->
+    <style>
+        .alert-container {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 9999;
+}
+
+.alert {
+    animation: fadeOut 5s ease-in-out forwards; /* Adjust duration as needed */
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+    </style>
+    <!--End of css for messages -->
+
+    
+ <!-- Displaying messages -->
+   {% if messages %}
+    <div class="alert-container ">
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+
+
+
+
+    <!--Looping-->
+    {% if allcars %}
+    <hr>
+    <ul>
+        {% for car in allcars %}
+        <li>Car Brand: {{ car.brand|capfirst }} |Manufacture Year: {{ car.year }} | Country {{ car.country }} 
+
+          <a href="{% url 'cars:add' %}">Add </a> | <a href="{% url 'cars:update' car.pk %}">Update</a> | <a href="{% url 'cars:delete' %}">Delete</a>
+        </li>
+        
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No Cars Available</p>
+    {% endif %}
+    
+</div>
+
+{% endblock %}
